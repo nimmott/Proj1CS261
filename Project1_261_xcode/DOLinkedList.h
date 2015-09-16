@@ -52,6 +52,7 @@ void DOLinkedList<T>::deleteElement(T element){
         return;
     }
     
+    
     if (head->data == element && head->next != NULL){ //deleting first element it's not the only element
         head = head->next;
         head->previous = NULL;
