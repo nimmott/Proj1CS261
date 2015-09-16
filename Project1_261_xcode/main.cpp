@@ -34,5 +34,9 @@ int main(int argc, char** argv) {
     stringList.deleteElement("Cat");
     stringList.add("Homer");
     stringList.deleteElement("Krusty");
+    stringList.deleteElement("Harrison");
+    stringList.deleteElement("Juan");
+    stringList.deleteElement("Sam");
+    stringList.deleteElement("Rae");
 }
 

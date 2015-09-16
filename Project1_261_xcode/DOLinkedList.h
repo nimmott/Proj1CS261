@@ -64,6 +64,7 @@ void DOLinkedList<T>::deleteElement(T element){
     if (head!=NULL && head->next == NULL && head->data == element){ //deleting head when it's the only element
         delete head;
         head = NULL;
+        tail = NULL;
         cout <<"List is now empty"<<endl;
         size--;
         return;
@@ -73,7 +74,8 @@ void DOLinkedList<T>::deleteElement(T element){
     
     while (current != NULL){
         if (current->data == element && current->next == NULL){ //deleting last element
-            current->previous->next = NULL;
+            current->previous->next = NULL;                     //we know last element != head
+            tail = current->previous;
             delete current;
             current = NULL;
             size--;
@@ -100,6 +102,7 @@ DOLinkedList<T>::~DOLinkedList(){
         previous = current;
         current = current->next;
         delete previous;
+        size--;
     }
 }
 
