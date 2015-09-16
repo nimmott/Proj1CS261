@@ -46,6 +46,7 @@ private:
 template<typename T>
 void DOLinkedList<T>::deleteElement(T element){
    Node<T> * current = head;
+   
     
     if (head == NULL){
         cout <<"Deleting from empty list"<<endl;
