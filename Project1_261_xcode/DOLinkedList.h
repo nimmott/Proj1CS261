@@ -38,7 +38,7 @@ public:
     
 private:
     Node <T> * head;
-     Node <T> * tail;
+    Node <T> * tail;
     int size;
     
 };
