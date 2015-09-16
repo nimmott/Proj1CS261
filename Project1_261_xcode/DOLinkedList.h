@@ -29,7 +29,7 @@ template <typename T>
 class DOLinkedList{
 public:
     
-    DOLinkedList (): head (NULL), size (0){}
+    DOLinkedList (): head (NULL), tail (NULL), size (0){}
     virtual ~DOLinkedList();
     
     int getSize(){return size;}
@@ -38,6 +38,7 @@ public:
     
 private:
     Node <T> * head;
+     Node <T> * tail;
     int size;
     
 };
@@ -106,18 +107,23 @@ template <typename T>
 void DOLinkedList<T>::add (T element){
     Node <T> * current = head;
     Node <T> * newnode = new Node <T> (element);
-    if (head == NULL){
+    if (head == NULL){  //inserting first element
         head = newnode;
+        tail = head;
         size++;
         return;
     }
     
-    if (head != NULL && element <= head->data)
+    if (head != NULL && element <= head->data) //inserting item before head when head it not the only item
     {
         head = newnode;
         head->next = current;
         current->previous = head;
         size ++;
+        if (current->next == NULL){
+            tail = current;
+        }
+        
         return;
         
     }
@@ -137,6 +143,7 @@ void DOLinkedList<T>::add (T element){
         if (current->next == NULL){  //adding to end of list
             current->next = newnode;
             newnode->previous = current;
+            tail = newnode;
             size ++;
             return;
         }
