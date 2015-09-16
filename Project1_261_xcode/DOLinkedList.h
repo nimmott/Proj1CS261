@@ -34,12 +34,62 @@ public:
     
     int getSize(){return size;}
     void add(T element);
+    void deleteElement (T element);
     
 private:
     Node <T> * head;
     int size;
     
 };
+
+template<typename T>
+void DOLinkedList<T>::deleteElement(T element){
+   Node<T> * current = head;
+    
+    if (head == NULL){
+        cout <<"Deleting from empty list"<<endl;
+        return;
+    }
+    
+    if (head->data == element && head->next != NULL){ //deleting first element it's not the only element
+        head = head->next;
+        head->previous = NULL;
+        delete current;
+        current = NULL;
+        size --;
+        return;
+    }
+    
+    if (head!=NULL && head->next == NULL && head->data == element){ //deleting head when it's the only element
+        delete head;
+        head = NULL;
+        cout <<"List is now empty"<<endl;
+        size--;
+        return;
+    }
+    
+    
+    
+    while (current != NULL){
+        if (current->data == element && current->next == NULL){ //deleting last element
+            current->previous->next = NULL;
+            delete current;
+            current = NULL;
+            size--;
+            return;
+        }
+        
+        if (current->data == element){ //deleting element in the middle of list
+            current->previous->next = current->next;
+            current->next->previous = current->previous;
+            delete current;
+            current = NULL;
+            size --;
+            return;
+        }
+        current = current->next;
+    }
+}
 
 template <typename T>
 DOLinkedList<T>::~DOLinkedList(){
@@ -69,11 +119,6 @@ void DOLinkedList<T>::add (T element){
         current->previous = head;
         size ++;
         return;
-        
-    }
-    
-    
-    if (current->previous == NULL){
         
     }
     

@@ -30,5 +30,9 @@ int main(int argc, char** argv) {
     stringList.add("Cat");
     stringList.add("Juan");
     stringList.add("John");
+    stringList.deleteElement("Sam");
+    stringList.deleteElement("Cat");
+    stringList.add("Homer");
+    stringList.deleteElement("Krusty");
 }
 
