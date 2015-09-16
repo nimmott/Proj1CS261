@@ -1,15 +1,34 @@
-//
-//  main.cpp
-//  Project1_261_xcode
-//
-//  Created by Harrsion Brace on 9/15/15.
-//  Copyright (c) 2015 HarrisonBrace. All rights reserved.
-//
+/*
+ * File:   main.cpp
+ * Author: Harrison Brace
+ *
+ * Created on September 10, 2015, 4:37 PM
+ */
 
+#include <cstdlib>
+#include "DOLinkedList.h"
+#include <string>
 #include <iostream>
 
-int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
-    return 0;
+
+
+using namespace std;
+
+/*
+ *
+ */
+int main(int argc, char** argv) {
+    
+    //DOLinkedList <string> * mylist = new DOLinkedList<string>;
+    //mylist->add ("Rae");
+    //  DOLinkedList <int> myList2;
+    DOLinkedList<string> stringList;
+    //  DOLinkedList<int> stringList;return 0;
+    stringList.add("Rae");
+    stringList.add("Harrison");
+    stringList.add("Sam");
+    stringList.add("Cat");
+    stringList.add("Juan");
+    stringList.add("John");
 }
+

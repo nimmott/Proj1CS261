@@ -25,6 +25,7 @@
 /* Begin PBXFileReference section */
 		8456579D1BA8AD07004B5053 /* Project1_261_xcode */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Project1_261_xcode; sourceTree = BUILT_PRODUCTS_DIR; };
 		845657A01BA8AD07004B5053 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		845657A71BA8AD63004B5053 /* DOLinkedList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DOLinkedList.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +59,7 @@
 			isa = PBXGroup;
 			children = (
 				845657A01BA8AD07004B5053 /* main.cpp */,
+				845657A71BA8AD63004B5053 /* DOLinkedList.h */,
 			);
 			path = Project1_261_xcode;
 			sourceTree = "<group>";
