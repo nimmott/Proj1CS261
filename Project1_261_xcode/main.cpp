@@ -25,9 +25,15 @@ int main(int argc, char** argv) {
     DOLinkedList<string> stringList;
     //  DOLinkedList<int> stringList;return 0;
     stringList.add("Rae");
+    stringList.deleteElement("Rae");
+    stringList.add("Rae");
+    stringList.add("Rae");
+    stringList.add("Rae");
     stringList.add("Harrison");
     stringList.add("Sam");
     stringList.add("Cat");
+    stringList.add("Cat");
+    stringList.add("Juan");
     stringList.add("Juan");
     stringList.add("John");
     stringList.deleteElement("Sam");

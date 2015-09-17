@@ -45,38 +45,37 @@ private:
 
 template<typename T>
 void DOLinkedList<T>::deleteElement(T element){
-   Node<T> * current = head;
-   
+    Node<T> * current = head;
+    Node<T> * temp = NULL;
     
     if (head == NULL){
         cout <<"Deleting from empty list"<<endl;
         return;
     }
     
-    
+
+    while (current != NULL){
+        
+        if (head->next == NULL && head->data == element){ //deleting head when it's the only element
+            delete head;
+            head = tail = current = NULL;
+            cout <<"List is now empty"<<endl;
+            size--;
+            return;
+        }
+
     if (head->data == element && head->next != NULL){ //deleting first element it's not the only element
         head = head->next;
         head->previous = NULL;
+        temp = current->next;
         delete current;
-        current = NULL;
+        current = temp;
         size --;
-        return;
+        continue;
     }
     
-    if (head!=NULL && head->next == NULL && head->data == element){ //deleting head when it's the only element
-        delete head;
-        head = NULL;
-        tail = NULL;
-        cout <<"List is now empty"<<endl;
-        size--;
-        return;
-    }
-    
-    
-    
-    while (current != NULL){
-        if (current->data == element && current->next == NULL){ //deleting last element
-            current->previous->next = NULL;                     //we know last element != head
+    if (current->data == element && current->next == NULL){ //deleting last element
+            current->previous->next = NULL;                //we know last element != head
             tail = current->previous;
             delete current;
             current = NULL;
@@ -84,15 +83,17 @@ void DOLinkedList<T>::deleteElement(T element){
             return;
         }
         
-        if (current->data == element){ //deleting element in the middle of list
-            current->previous->next = current->next;
-            current->next->previous = current->previous;
-            delete current;
-            current = NULL;
-            size --;
-            return;
+    if (current->data == element){ //deleting element in the middle of list
+        current->previous->next = current->next;
+        current->next->previous = current->previous;
+        temp = current->next;
+        delete current;
+        current = temp;
+        size --;
+        continue;
         }
         current = current->next;
+
     }
 }
 
