@@ -97,6 +97,7 @@ private:
     Node <T> * head;
     Node <T> * tail;
     int size;
+    int big;
     
 };
 
