@@ -26,7 +26,37 @@ public:
 };
 
 
-
+template<typename T>
+class Iterator{
+public:
+    Iterator(Node <T>* p): current (p){}
+    
+    Iterator operator++(){
+        current = current->next;
+        return *this;
+    }
+    
+    Iterator operator-- (){
+        current=current->previous;
+        return *this;
+    }
+    
+    T& operator * (){
+        return current->element;
+    }
+    
+    bool operator == (const Iterator<T>& iterator){
+        return current = iterator.current;
+    }
+    
+    bool operator != (const Iterator<T> & iterator){
+        return current != iterator.current;
+    }
+    
+    
+private:
+    Node<T> * current;
+};
 
 
 template <typename T>
@@ -40,6 +70,16 @@ public:
     void add(T element);
     void deleteElement (T element);
     void printList();
+    
+    Iterator < T > begin()
+    {
+        return Iterator < T > (head);
+    };
+    
+    Iterator < T > end()
+    {
+        return Iterator < T > (tail->next);
+    };
     
 private:
     Node <T> * head;
