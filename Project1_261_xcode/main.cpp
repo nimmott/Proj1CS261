@@ -10,10 +10,25 @@
 #include <string>
 #include <iostream>
 #include <fstream>
+#include <time.h>
 
 
 
 using namespace std;
+
+const string fileAddition = "proj1adds.data";
+const string fileDeletion = "proj1deletes.data";
+const int numInts = 100;
+
+void createDataFile(string filename, int count);
+void printForwards (Iterator<int> front);
+void printBackwards (Iterator<int> end);
+
+DOLinkedList<int> readfile(string file);
+
+
+
+
 
 /*
  *
@@ -25,6 +40,20 @@ int main(int argc, char** argv) {
     //  DOLinkedList <int> myList2;
     DOLinkedList<string> stringList;
     //  DOLinkedList<int> stringList;return 0;
+    
+    createDataFile(fileAddition, numInts);
+    DOLinkedList<int> intList = readfile(fileAddition);
+    
+    intList.printList();
+    
+    Iterator<int> myIterator = intList.begin();
+    
+    for ( ; myIterator != intList.end(); myIterator++){
+        
+        cout << (*myIterator)<< endl;
+        
+    }
+    
     stringList.add("Rey");
     stringList.deleteElement("Rey");
     stringList.printList();
@@ -51,3 +80,31 @@ int main(int argc, char** argv) {
     stringList.deleteElement("Rae");
 }
 
+void createDataFile(string filename, int count){
+    ofstream myfile (filename);
+    
+    int random_integer = 0;
+    
+    for(int index=0; index<count; index++)
+    {
+        random_integer = (rand()%1000)+1;
+        myfile << random_integer << "\n";
+    }
+}
+
+DOLinkedList<int> readfile(string file){
+    DOLinkedList<int> mylist;
+    
+    ifstream myFile (file);
+    int number = 0;
+    
+    if (!myFile){
+        cout <<"Must create file " <<file<<" first"<<endl;
+    }
+    
+    while (myFile>>number){
+        mylist.add(number);
+    }
+    
+    return mylist;
+}

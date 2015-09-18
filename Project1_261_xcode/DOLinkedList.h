@@ -31,7 +31,7 @@ class Iterator{
 public:
     Iterator(Node <T>* p): current (p){}
     
-    Iterator operator++(){
+    Iterator operator++(int){
         current = current->next;
         return *this;
     }
@@ -42,7 +42,7 @@ public:
     }
     
     T& operator * (){
-        return current->element;
+        return current->data;
     }
     
     bool operator == (const Iterator<T>& iterator){
