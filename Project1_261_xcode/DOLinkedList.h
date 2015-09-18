@@ -36,7 +36,7 @@ public:
         return *this;
     }
     
-    Iterator operator-- (){
+    Iterator operator-- (int){
         current=current->previous;
         return *this;
     }
@@ -71,7 +71,7 @@ public:
     void deleteElement (T element);
     void printList();
     
-    Iterator < T > begin()
+    Iterator < T > beginF()
     {
         return Iterator < T > (head);
     };
@@ -80,6 +80,12 @@ public:
     {
         return Iterator < T > (tail->next);
     };
+    
+    Iterator < T > endB(){
+        
+        return Iterator<T> (tail);
+        
+    }
     
 private:
     Node <T> * head;

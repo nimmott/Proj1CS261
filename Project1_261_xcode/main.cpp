@@ -21,8 +21,8 @@ const string fileDeletion = "proj1deletes.data";
 const int numInts = 100;
 
 void createDataFile(string filename, int count);
-void printForwards (Iterator<int> front);
-void printBackwards (Iterator<int> end);
+void printForwards ();
+void printBackwards ();
 
 DOLinkedList<int> readfile(string file);
 
@@ -34,26 +34,30 @@ DOLinkedList<int> readfile(string file);
  *
  */
 int main(int argc, char** argv) {
-    
-    //DOLinkedList <string> * mylist = new DOLinkedList<string>;
-    //mylist->add ("Rae");
-    //  DOLinkedList <int> myList2;
-    DOLinkedList<string> stringList;
-    //  DOLinkedList<int> stringList;return 0;
+   
     
     createDataFile(fileAddition, numInts);
+    createDataFile(fileDeletion, numInts);
     DOLinkedList<int> intList = readfile(fileAddition);
     
+    DOLinkedList<int> deletionList = readfile(fileDeletion);
+    Iterator<int> deletionIterator = deletionList.beginF();
+    
     intList.printList();
-    
-    Iterator<int> myIterator = intList.begin();
-    
-    for ( ; myIterator != intList.end(); myIterator++){
+    for ( ; deletionIterator !=deletionList.end(); deletionIterator++){
         
-        cout << (*myIterator)<< endl;
+        intList.deleteElement(*deletionIterator);
         
     }
+    intList.printList();
     
+    
+    printForwards();
+   
+    
+    
+    DOLinkedList<string> stringList;
+
     stringList.add("Rey");
     stringList.deleteElement("Rey");
     stringList.printList();
@@ -100,6 +104,7 @@ DOLinkedList<int> readfile(string file){
     
     if (!myFile){
         cout <<"Must create file " <<file<<" first"<<endl;
+        createDataFile(file, numInts);
     }
     
     while (myFile>>number){
@@ -107,4 +112,27 @@ DOLinkedList<int> readfile(string file){
     }
     
     return mylist;
+}
+
+void printForwards(){
+    DOLinkedList<int> intList = readfile(fileAddition);
+    Iterator<int> myIterator = intList.beginF();
+    for ( ; myIterator != intList.end(); myIterator++){
+        
+        cout << *myIterator<< endl;
+        
+    }
+}
+
+void printBackwards (){
+    
+    DOLinkedList<int> intList = readfile(fileAddition);
+    Iterator<int> myIterator = intList.end();
+    for ( ; myIterator != intList.end(); myIterator--){
+        
+        cout << *myIterator<< endl;
+        
+    }
+
+    
 }
