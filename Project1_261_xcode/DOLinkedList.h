@@ -46,7 +46,7 @@ public:
     }
     
     bool operator == (const Iterator<T>& iterator){
-        return current = iterator.current;
+        return current == iterator.current;
     }
     
     bool operator != (const Iterator<T> & iterator){
@@ -78,7 +78,7 @@ public:
     
     Iterator < T > beginB()
     {
-        return Iterator < T > (tail);
+        return Iterator < T > (head->previous);
     };
 
     
@@ -97,7 +97,6 @@ private:
     Node <T> * head;
     Node <T> * tail;
     int size;
-    int big;
     
 };
 

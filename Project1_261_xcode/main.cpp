@@ -134,11 +134,11 @@ void printBackwards (){
     Iterator<int> myIterator = intList.endB();
     cout <<"Printing a list backwards that contains " <<intList.getSize()<<" elements"<<endl;
     
-    for ( ; myIterator != intList.beginF(); myIterator--){
+    for ( ; myIterator != intList.beginB(); myIterator--){
         
         cout << *myIterator<< endl;
         
     }
 
-    
+
 }
