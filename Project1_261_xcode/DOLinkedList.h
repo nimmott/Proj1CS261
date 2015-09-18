@@ -25,6 +25,10 @@ public:
     Node(): next (NULL), previous (NULL) {}
 };
 
+
+
+
+
 template <typename T>
 class DOLinkedList{
 public:
@@ -35,6 +39,7 @@ public:
     int getSize(){return size;}
     void add(T element);
     void deleteElement (T element);
+    void printList();
     
 private:
     Node <T> * head;
@@ -42,6 +47,29 @@ private:
     int size;
     
 };
+
+template <typename T>
+void DOLinkedList<T>::printList(){
+    
+    Node<T> * current = head;
+    if (head == NULL){
+        cout<<"Empty list"<<endl;
+        return;
+    }
+    cout << "Printing a list of "<< size <<" elements"<<endl;
+    
+    int checkListSize = 0;
+    
+    while (current!=NULL){
+        checkListSize++;
+        cout<< current->data<<endl;
+        current = current->next;
+    }
+    cout << checkListSize<<" elements"<<endl;
+    cout <<"-----------------End of list--------------"<<endl;
+}
+
+
 
 template<typename T>
 void DOLinkedList<T>::deleteElement(T element){

@@ -26,6 +26,7 @@ int main(int argc, char** argv) {
     //  DOLinkedList<int> stringList;return 0;
     stringList.add("Rey");
     stringList.deleteElement("Rey");
+    stringList.printList();
     stringList.add("Rey");
     stringList.add("Rey");
     stringList.add("Rey");
@@ -36,12 +37,14 @@ int main(int argc, char** argv) {
     stringList.add("Juan");
     stringList.add("Juan");
     stringList.add("John");
+    stringList.printList();
     stringList.deleteElement("Sam");
     stringList.deleteElement("Cat");
     stringList.add("Homer");
     stringList.deleteElement("Krusty");
     stringList.deleteElement("Harrison");
     stringList.add("Krusty");
+    stringList.printList();
     stringList.deleteElement("Juan");
     stringList.deleteElement("Sam");
     stringList.deleteElement("Rae");
