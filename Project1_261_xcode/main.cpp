@@ -24,11 +24,11 @@ int main(int argc, char** argv) {
     //  DOLinkedList <int> myList2;
     DOLinkedList<string> stringList;
     //  DOLinkedList<int> stringList;return 0;
-    stringList.add("Rae");
-    stringList.deleteElement("Rae");
-    stringList.add("Rae");
-    stringList.add("Rae");
-    stringList.add("Rae");
+    stringList.add("Rey");
+    stringList.deleteElement("Rey");
+    stringList.add("Rey");
+    stringList.add("Rey");
+    stringList.add("Rey");
     stringList.add("Harrison");
     stringList.add("Sam");
     stringList.add("Cat");
@@ -41,6 +41,7 @@ int main(int argc, char** argv) {
     stringList.add("Homer");
     stringList.deleteElement("Krusty");
     stringList.deleteElement("Harrison");
+    stringList.add("Krusty");
     stringList.deleteElement("Juan");
     stringList.deleteElement("Sam");
     stringList.deleteElement("Rae");

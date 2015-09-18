@@ -52,7 +52,6 @@ void DOLinkedList<T>::deleteElement(T element){
         cout <<"Deleting from empty list"<<endl;
         return;
     }
-    
 
     while (current != NULL){
         
@@ -120,7 +119,7 @@ void DOLinkedList<T>::add (T element){
         return;
     }
     
-    if (head != NULL && element <= head->data) //inserting item before head when head it not the only item
+    if (head != NULL && element <= head->data) //inserting item before head
     {
         head = newnode;
         head->next = current;
@@ -129,15 +128,13 @@ void DOLinkedList<T>::add (T element){
         if (current->next == NULL){
             tail = current;
         }
-        
         return;
         
     }
     
     while (current != NULL){
-        cout << "entering while loop"<<endl;
-      //  system("pause");
-                if (element <= current->data){
+       // cout << "entering while loop"<<endl;
+        if (element <= current->data){
             current->previous->next = newnode;
             newnode->previous = current->previous;
             newnode->next = current;
