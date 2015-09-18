@@ -43,16 +43,17 @@ int main(int argc, char** argv) {
     DOLinkedList<int> deletionList = readfile(fileDeletion);
     Iterator<int> deletionIterator = deletionList.beginF();
     
-    intList.printList();
-    for ( ; deletionIterator !=deletionList.end(); deletionIterator++){
+   // intList.printList();
+    for ( ; deletionIterator !=deletionList.endF(); deletionIterator++){
         
         intList.deleteElement(*deletionIterator);
         
     }
-    intList.printList();
+  //  intList.printList();
     
     
     printForwards();
+    printBackwards();
    
     
     
@@ -60,7 +61,7 @@ int main(int argc, char** argv) {
 
     stringList.add("Rey");
     stringList.deleteElement("Rey");
-    stringList.printList();
+ //   stringList.printList();
     stringList.add("Rey");
     stringList.add("Rey");
     stringList.add("Rey");
@@ -71,14 +72,14 @@ int main(int argc, char** argv) {
     stringList.add("Juan");
     stringList.add("Juan");
     stringList.add("John");
-    stringList.printList();
+//    stringList.printList();
     stringList.deleteElement("Sam");
     stringList.deleteElement("Cat");
     stringList.add("Homer");
     stringList.deleteElement("Krusty");
     stringList.deleteElement("Harrison");
     stringList.add("Krusty");
-    stringList.printList();
+ //   stringList.printList();
     stringList.deleteElement("Juan");
     stringList.deleteElement("Sam");
     stringList.deleteElement("Rae");
@@ -117,7 +118,10 @@ DOLinkedList<int> readfile(string file){
 void printForwards(){
     DOLinkedList<int> intList = readfile(fileAddition);
     Iterator<int> myIterator = intList.beginF();
-    for ( ; myIterator != intList.end(); myIterator++){
+    
+    cout <<"Printing a list forwards that contains " <<intList.getSize()<<" elements"<<endl;
+    
+    for ( ; myIterator != intList.endF(); myIterator++){
         
         cout << *myIterator<< endl;
         
@@ -127,8 +131,10 @@ void printForwards(){
 void printBackwards (){
     
     DOLinkedList<int> intList = readfile(fileAddition);
-    Iterator<int> myIterator = intList.end();
-    for ( ; myIterator != intList.end(); myIterator--){
+    Iterator<int> myIterator = intList.endB();
+    cout <<"Printing a list backwards that contains " <<intList.getSize()<<" elements"<<endl;
+    
+    for ( ; myIterator != intList.beginF(); myIterator--){
         
         cout << *myIterator<< endl;
         

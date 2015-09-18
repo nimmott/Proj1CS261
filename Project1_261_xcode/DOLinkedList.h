@@ -76,7 +76,13 @@ public:
         return Iterator < T > (head);
     };
     
-    Iterator < T > end()
+    Iterator < T > beginB()
+    {
+        return Iterator < T > (tail);
+    };
+
+    
+    Iterator < T > endF()
     {
         return Iterator < T > (tail->next);
     };
