@@ -18,71 +18,43 @@ using namespace std;
 
 const string fileAddition = "proj1adds.data";
 const string fileDeletion = "proj1deletes.data";
-const int numInts = 100;
+const int numInts = 10;
 
 void createDataFile(string filename, int count);
-void printForwards ();
-void printBackwards ();
+void printForwards ( DOLinkedList<int> intList);
+void printBackwards ( DOLinkedList<int> intList);
 
 DOLinkedList<int> readfile(string file);
 
 
-
-
-
-/*
- *
- */
 int main(int argc, char** argv) {
    
     
     createDataFile(fileAddition, numInts);
     createDataFile(fileDeletion, numInts);
     DOLinkedList<int> intList = readfile(fileAddition);
-    
+  //  printBackwards(intList);
+ //   intList = readfile(fileAddition);
+    printBackwards(intList);
+
     DOLinkedList<int> deletionList = readfile(fileDeletion);
     Iterator<int> deletionIterator = deletionList.beginF();
     
-   // intList.printList();
-    for ( ; deletionIterator !=deletionList.endF(); deletionIterator++){
+    intList.printList();
+ for ( ; deletionIterator !=deletionList.endF(); deletionIterator++){
         
-        intList.deleteElement(*deletionIterator);
+    intList.deleteElement(*deletionIterator);
         
     }
-  //  intList.printList();
+   intList.printList();
+ //    printBackwards(intList);
     
-    
-    printForwards();
-    printBackwards();
+   // printForwards(intList);
+   // printBackwards(intList);
    
     
     
-    DOLinkedList<string> stringList;
-
-    stringList.add("Rey");
-    stringList.deleteElement("Rey");
- //   stringList.printList();
-    stringList.add("Rey");
-    stringList.add("Rey");
-    stringList.add("Rey");
-    stringList.add("Harrison");
-    stringList.add("Sam");
-    stringList.add("Cat");
-    stringList.add("Cat");
-    stringList.add("Juan");
-    stringList.add("Juan");
-    stringList.add("John");
-//    stringList.printList();
-    stringList.deleteElement("Sam");
-    stringList.deleteElement("Cat");
-    stringList.add("Homer");
-    stringList.deleteElement("Krusty");
-    stringList.deleteElement("Harrison");
-    stringList.add("Krusty");
- //   stringList.printList();
-    stringList.deleteElement("Juan");
-    stringList.deleteElement("Sam");
-    stringList.deleteElement("Rae");
+   
 }
 
 void createDataFile(string filename, int count){
@@ -115,8 +87,14 @@ DOLinkedList<int> readfile(string file){
     return mylist;
 }
 
-void printForwards(){
-    DOLinkedList<int> intList = readfile(fileAddition);
+void printForwards( DOLinkedList<int> intList){
+    // DOLinkedList<int> intList = readfile(fileAddition);
+    
+    if (intList.getSize() == 0){
+        cout <<"Attempting to print an empty list"<<endl;
+        return;
+    }
+    
     Iterator<int> myIterator = intList.beginF();
     
     cout <<"Printing a list forwards that contains " <<intList.getSize()<<" elements"<<endl;
@@ -128,9 +106,13 @@ void printForwards(){
     }
 }
 
-void printBackwards (){
+void printBackwards ( DOLinkedList<int> intList){
     
-    DOLinkedList<int> intList = readfile(fileAddition);
+   // DOLinkedList<int> intList = readfile(fileAddition);
+    if (intList.getSize() == 0){
+        cout <<"Attempting to print an empty list"<<endl;
+        return;
+    }
     Iterator<int> myIterator = intList.endB();
     cout <<"Printing a list backwards that contains " <<intList.getSize()<<" elements"<<endl;
     

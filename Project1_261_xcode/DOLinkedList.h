@@ -70,6 +70,7 @@ public:
     void add(T element);
     void deleteElement (T element);
     void printList();
+    void printListBackwards();
     
     Iterator < T > beginF()
     {
@@ -101,6 +102,21 @@ private:
 };
 
 template <typename T>
+void DOLinkedList<T>::printListBackwards(){
+    Node<T> * current = tail;
+    
+    if (tail == NULL){
+        cout <<"Attempting to print empty list"<<endl;
+    }
+    cout << "Printing a list backwards of "<< size <<" elements"<<endl;
+    while (current != NULL){
+        cout<< current->data<<endl;
+        current = current->previous;
+    }
+    
+}
+
+template <typename T>
 void DOLinkedList<T>::printList(){
     
     Node<T> * current = head;
@@ -108,7 +124,7 @@ void DOLinkedList<T>::printList(){
         cout<<"Empty list"<<endl;
         return;
     }
-    cout << "Printing a list of "<< size <<" elements"<<endl;
+    cout << "Printing a list forwards of "<< size <<" elements"<<endl;
     
     int checkListSize = 0;
     
