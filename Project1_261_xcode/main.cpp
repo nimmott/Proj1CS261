@@ -18,7 +18,7 @@ using namespace std;
 
 const string fileAddition = "proj1adds.data";
 const string fileDeletion = "proj1deletes.data";
-const int numInts = 50;
+const int numInts = 900;
 
 void createDataFile(string filename, int count);
 void printForwards ( DOLinkedList<int> &intList);
@@ -35,28 +35,21 @@ int main(int argc, char** argv) {
     
     
     DOLinkedList<int> intList = readfile(fileAddition);
-    intList.printListBackwards();
+    printForwards(intList);
     
     
-    /* Delete items from the intList by iterating through another 
+    /* Delete items from the intList by means of  another
      linked list (deletion list) by using an iterator to go through
      the deletion list
      */
     DOLinkedList<int> deletionList = readfile(fileDeletion);
     
-    intList.printList();
         for ( Iterator<int> deletionIterator = deletionList.beginF(); deletionIterator !=deletionList.endF(); deletionIterator++){
             
             intList.deleteElement(*deletionIterator);
         
             }
-    intList.printList();
-    
-    //print backwards works when called one time. When called a second time, it fails.
     printBackwards(intList);
-    printBackwards(intList);
-    printForwards(intList);
-    
     
    
 }
