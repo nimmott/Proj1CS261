@@ -15,40 +15,73 @@
 
 
 using namespace std;
-
+/*
+Constants for project. File name of data files.
+numInts controls the number of ints in the default
+data files that are created when a file does not exist.
+*/
 const string fileAddition = "proj1adds.data";
 const string fileDeletion = "proj1deletes.data";
 const int numInts = 50;
 
-void createDataFile(string filename, int count);
-void printForwards ( DOLinkedList<int> intList);
-void printBackwards ( DOLinkedList<int> intList);
 
+/* The create data file functions are for testing.
+ Creates a list of random integers (number specified by count parameter).
+ Paramemters:
+    filename: the name of the file created by this function
+    count: the number of randdom integers to be contained in the file
+ */
+void createDataFile(string filename, int count);
+/*Print a linked list in order (starting a first node, ending at last node).
+ Function uses an Iterator object and obtains the value of each element in the
+ list by using the Iterator's user-defined dereferencing operator.
+ Parameters: 
+    intList: A linked list of type int. If list is empty, function outputs
+    a comment that the list is empty and returns.
+*/
+void printForwards ( DOLinkedList<int> intList);
+/*Print a linked list in reverse order (starting with the last node, ending with the first node).
+ Function uses an Iterator object and obtains the value of each element in the
+ list by using the Iterator's user-defined dereferencing operator.
+ Parameters:
+ intList: A linked list of type int. If list is empty, function outputs
+ a comment that the list is empty and returns.
+ */
+void printBackwards ( DOLinkedList<int> intList);
+/*Reads the specified data file containing a list of integers (much be in specified format).
+ Returns a ordered, double-linked DOLinkedList <int> object. Used for reading both the 
+ addition and deletion file
+ Paramemters:
+    file: The name of the file to be read. 
+ Return Value:
+    A DOLinkedList object containing the values read from the file specified by the file
+    parameter.
+*/
 DOLinkedList<int> readfile(string file);
 
 
 int main(int argc, char** argv) {
-   
-    
-    createDataFile(fileAddition, numInts);
-    createDataFile(fileDeletion, numInts);
+createDataFile(fileAddition, numInts);
+createDataFile(fileDeletion, numInts);
     
     
     DOLinkedList<int> intList = readfile(fileAddition);
     printForwards(intList);
     
     
-    /* Delete items from the intList by means of  another
-     linked list (deletion list) by using an iterator to go through
-     the deletion list
+    /* Read the proj1deletes.data file and create a linked list with the elements from that file,
+     using the readfile() method. In the for loop, create an Iterator and iterates through the
+     deletion linked list, calling DOLinkedList::remove() with each element in the deletion list.
      */
     DOLinkedList<int> deletionList = readfile(fileDeletion);
     
-        for ( Iterator<int> deletionIterator = deletionList.beginF(); deletionIterator !=deletionList.endF(); deletionIterator++){
+        for (Iterator<int> deletionIterator = deletionList.beginF(); deletionIterator !=deletionList.endF(); deletionIterator++){
             
-            intList.deleteElement(*deletionIterator);
+            intList.remove(*deletionIterator);
         
             }
+    //print the list backwards now, after the items from the proj1deletes.data file have been removed
+    
     printBackwards(intList);
     
    
@@ -58,6 +91,7 @@ void createDataFile(string filename, int count){
     ofstream myfile (filename);
     
     int random_integer = 0;
+    // srand (time(NULL));
     
     for(int index=0; index<count; index++)
     {
@@ -73,7 +107,7 @@ DOLinkedList<int> readfile(string file){
     
     if (!myFile){
         cout <<"Must create file " <<file<<" first"<<endl;
-        createDataFile(file, numInts);
+        exit (EXIT_FAILURE);
     }
     
     while (myFile>>number){

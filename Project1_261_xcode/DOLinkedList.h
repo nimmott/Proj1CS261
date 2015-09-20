@@ -69,7 +69,7 @@ public:
     
     int getSize(){return size;}
     void add(T element);
-    void deleteElement (T element);
+    void remove (T element);
     void printList();
     void printListBackwards();
     
@@ -141,7 +141,7 @@ void DOLinkedList<T>::printList(){
 
 
 template<typename T>
-void DOLinkedList<T>::deleteElement(T element){
+void DOLinkedList<T>::remove(T element){
     Node<T> * current = head;
     Node<T> * temp = NULL;
     
@@ -202,8 +202,6 @@ DOLinkedList<T>::DOLinkedList(const DOLinkedList& otherObject){
     if (otherObject.size == 0){
         return;
     }
-    
-    
     Node<T> *current = otherObject.head;
     
     while (current!= NULL){
