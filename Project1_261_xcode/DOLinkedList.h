@@ -65,6 +65,7 @@ public:
     
     DOLinkedList (): head (NULL), tail (NULL), size (0){}
     virtual ~DOLinkedList();
+    DOLinkedList(const DOLinkedList& otherObject);
     
     int getSize(){return size;}
     void add(T element);
@@ -189,6 +190,25 @@ void DOLinkedList<T>::deleteElement(T element){
         }
         current = current->next;
 
+    }
+}
+
+template <typename T>
+DOLinkedList<T>::DOLinkedList(const DOLinkedList& otherObject){
+    this->head = NULL;
+    this->tail = NULL;
+    this->size = 0;
+    
+    if (otherObject.size == 0){
+        return;
+    }
+    
+    
+    Node<T> *current = otherObject.head;
+    
+    while (current!= NULL){
+        this->add(current->data);
+        current = current->next;
     }
 }
 

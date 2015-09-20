@@ -18,11 +18,11 @@ using namespace std;
 
 const string fileAddition = "proj1adds.data";
 const string fileDeletion = "proj1deletes.data";
-const int numInts = 900;
+const int numInts = 50;
 
 void createDataFile(string filename, int count);
-void printForwards ( DOLinkedList<int> &intList);
-void printBackwards ( DOLinkedList<int> &intList);
+void printForwards ( DOLinkedList<int> intList);
+void printBackwards ( DOLinkedList<int> intList);
 
 DOLinkedList<int> readfile(string file);
 
@@ -83,7 +83,7 @@ DOLinkedList<int> readfile(string file){
     return mylist;
 }
 
-void printForwards( DOLinkedList<int> &intList){
+void printForwards( DOLinkedList<int> intList){
     if (intList.getSize() == 0){
         cout <<"Attempting to print an empty list"<<endl;
         return;
@@ -99,7 +99,7 @@ void printForwards( DOLinkedList<int> &intList){
     }
 }
 
-void printBackwards ( DOLinkedList<int> &intList){
+void printBackwards ( DOLinkedList<int> intList){
     
     if (intList.getSize() == 0){
         cout <<"Attempting to print an empty list"<<endl;
