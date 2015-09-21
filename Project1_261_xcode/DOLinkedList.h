@@ -92,7 +92,6 @@ public:
     Iterator < T > endB(){
         
         return Iterator<T> (tail);
-        
     }
     
 private:
@@ -245,9 +244,8 @@ void DOLinkedList<T>::add (T element){
         return;
         
     }
-    
+    //inserting item in middle of list. 
     while (current != NULL){
-       // cout << "entering while loop"<<endl;
         if (element <= current->data){
             current->previous->next = newnode;
             newnode->previous = current->previous;

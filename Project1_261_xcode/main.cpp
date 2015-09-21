@@ -22,7 +22,7 @@ data files that are created when a file does not exist.
 */
 const string fileAddition = "proj1adds.data";
 const string fileDeletion = "proj1deletes.data";
-const int numInts = 50;
+const int numInts = 100;
 
 
 /* The create data file functions are for testing.
@@ -66,6 +66,8 @@ createDataFile(fileDeletion, numInts);
     
     
     DOLinkedList<int> intList = readfile(fileAddition);
+    
+    cout <<intList.getSize()<<" elements have been loaded from "<<fileAddition<<" into the linked list."<<endl;
     printForwards(intList);
     
     
@@ -81,6 +83,8 @@ createDataFile(fileDeletion, numInts);
         
             }
     //print the list backwards now, after the items from the proj1deletes.data file have been removed
+    
+    cout <<"The linked list now contains "<<intList.getSize() <<" elements after reading deletion file"<<endl;
     
     printBackwards(intList);
     
@@ -124,13 +128,15 @@ void printForwards( DOLinkedList<int> intList){
     }
     
     Iterator<int> myIterator = intList.beginF();
-    cout <<"With Iterator. Printing a list forwards that contains " <<intList.getSize()<<" elements"<<endl;
+    cout <<"Printing a list forwards that contains " <<intList.getSize()<<" elements"<<endl;
     
     for ( ; myIterator != intList.endF(); myIterator++){
         
         cout << *myIterator<< endl;
         
     }
+    
+     cout <<"-----------------------------------"<<endl;
 }
 
 void printBackwards ( DOLinkedList<int> intList){
@@ -140,13 +146,15 @@ void printBackwards ( DOLinkedList<int> intList){
         return;
     }
     Iterator<int> myIterator = intList.endB();
-    cout <<"With Iterator. Printing a list backwards that contains " <<intList.getSize()<<" elements"<<endl;
+    cout <<"Printing a list backwards that contains " <<intList.getSize()<<" elements"<<endl;
     
     for ( ; myIterator != intList.beginB(); myIterator--){
         
         cout << *myIterator<< endl;
         
     }
+    
+    cout <<"-----------------------------------"<<endl;
 
 
 }
