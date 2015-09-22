@@ -1,8 +1,13 @@
 /*
  * File:   main.cpp
  * Author: Harrison Brace
- *
+ * CS261 Assignment 1
  * Created on September 10, 2015, 4:37 PM
+ 
+ Certification of Authenticity: 
+ I certify that this solution to the assignment is entirely my own work, but I received some assistance from professor James 
+ Etheredge. The assistance consisted of tracking down a problem with the linker that resulted from having declared a
+ destructor but not having implemented it.
  */
 
 #include <cstdlib>
@@ -25,7 +30,8 @@ const string fileDeletion = "proj1deletes.data";
 const int numInts = 100;
 
 
-/* The create data file functions are for testing.
+/* The create data file function is for testing and, as per instructions in class,
+ is commented out.
  Creates a list of random integers (number specified by count parameter).
  Paramemters:
     filename: the name of the file created by this function

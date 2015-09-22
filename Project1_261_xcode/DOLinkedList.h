@@ -29,22 +29,28 @@ public:
 template<typename T>
 class Iterator{
 public:
+ //Default construcor. Sets current to p
     Iterator(Node <T>* p): current (p){}
-    
+ 
+//Allows forward iteratio through list
     Iterator operator++(int){
         current = current->next;
         return *this;
     }
     
+//Allows backwards iteration through list
     Iterator operator-- (int){
         current=current->previous;
         return *this;
     }
     
+   
+//returns the data (of type T) contained in the current node.
     T& operator * (){
         return current->data;
     }
     
+ //compares iterators
     bool operator == (const Iterator<T>& iterator){
         return current == iterator.current;
     }
@@ -65,30 +71,47 @@ public:
     
     DOLinkedList (): head (NULL), tail (NULL), size (0){}
     virtual ~DOLinkedList();
+    
+    //Copy constructor. Default createsa a shallow copy.
+    //This creates a "deep" copy of the linked list.
+    //If list is empty, initializes object and then returns.
     DOLinkedList(const DOLinkedList& otherObject);
-    
+    //returns the number of elements contained in the linked list
     int getSize(){return size;}
+    //Adds a new node to the list. Inserted in order according to the
+    //value of element. Duplicate values result in multiple nodes
+    //(i.e., multiple instances of the same value are allowed)
     void add(T element);
+    //Removes all instances of the specified element from the linked list.
     void remove (T element);
-    void printList();
-    void printListBackwards();
+    //testing functions, commented out as per instructions in class
+    //void printList();
+    //void printListBackwards();
     
+    //Returns and iterator requried for forward iterations through the list.
+    //Iterator "points to" head of list
     Iterator < T > beginF()
     {
         return Iterator < T > (head);
     };
+    
+    //Returns an iterator required for testing end of list conditions
+    //when iterating backwards through a list
     
     Iterator < T > beginB()
     {
         return Iterator < T > (head->previous);
     };
 
-    
+    //Returns an iterator reqruied for testing for end of list when
+    //iteration forwards through a list
     Iterator < T > endF()
     {
         return Iterator < T > (tail->next);
     };
     
+    //returns and iterator requried for starting a backwards iteration
+    //through a list. "Points to" last node in list. 
     Iterator < T > endB(){
         
         return Iterator<T> (tail);
@@ -101,41 +124,41 @@ private:
     
 };
 
-template <typename T>
-void DOLinkedList<T>::printListBackwards(){
-    Node<T> * current = tail;
-    
-    if (tail == NULL){
-        cout <<"Attempting to print empty list"<<endl;
-    }
-    cout << "Printing a list backwards of "<< size <<" elements"<<endl;
-    while (current != NULL){
-        cout<< current->data<<endl;
-        current = current->previous;
-    }
-    
-}
+//template <typename T>
+//void DOLinkedList<T>::printListBackwards(){
+//    Node<T> * current = tail;
+//    
+//    if (tail == NULL){
+//        cout <<"Attempting to print empty list"<<endl;
+//    }
+//    cout << "Printing a list backwards of "<< size <<" elements"<<endl;
+//    while (current != NULL){
+//        cout<< current->data<<endl;
+//        current = current->previous;
+//    }
+//    
+//}
 
-template <typename T>
-void DOLinkedList<T>::printList(){
-    
-    Node<T> * current = head;
-    if (head == NULL){
-        cout<<"Empty list"<<endl;
-        return;
-    }
-    cout << "Printing a list forwards of "<< size <<" elements"<<endl;
-    
-    int checkListSize = 0;
-    
-    while (current!=NULL){
-        checkListSize++;
-        cout<< current->data<<endl;
-        current = current->next;
-    }
-    cout << checkListSize<<" elements"<<endl;
-    cout <<"-----------------End of list--------------"<<endl;
-}
+//template <typename T>
+//void DOLinkedList<T>::printList(){
+//    
+//    Node<T> * current = head;
+//    if (head == NULL){
+//        cout<<"Empty list"<<endl;
+//        return;
+//    }
+//    cout << "Printing a list forwards of "<< size <<" elements"<<endl;
+//    
+//    int checkListSize = 0;
+//    
+//    while (current!=NULL){
+//        checkListSize++;
+//        cout<< current->data<<endl;
+//        current = current->next;
+//    }
+//    cout << checkListSize<<" elements"<<endl;
+//    cout <<"-----------------End of list--------------"<<endl;
+//}
 
 
 
