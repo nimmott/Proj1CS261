@@ -90,7 +90,7 @@ public:
     //void printList();
     //void printListBackwards();
     
-    //Returns and iterator requried for forward iterations through the list.
+    //Returns and iterator required for forward iterations through the list.
     //Iterator "points to" head of list
     Iterator < T > beginF()
     {

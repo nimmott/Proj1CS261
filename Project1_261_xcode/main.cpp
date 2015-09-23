@@ -31,16 +31,16 @@ const int numInts = 100;
 /* The create data file function is for testing and, as per instructions in class,
  is commented out.
  Creates a list of random integers (number specified by count parameter).
- Paramemters:
+ Parameters:
     filename: the name of the file created by this function
-    count: the number of randdom integers to be contained in the file
+    count: the number of random integers to be contained in the file
  */
 void createDataFile(string filename, int count);
 
 /*Print a linked list in order (starting a first node, ending at last node).
  Function uses an Iterator object and obtains the value of each element in the
  list by using the Iterator's user-defined dereferencing operator.
- Parameters: 
+ Parameters:
     intList: A linked list of type int. If list is empty, function outputs
     a comment that the list is empty and returns.
 */
@@ -58,7 +58,7 @@ void printBackwards ( DOLinkedList<int> intList);
 /*Reads the specified data file containing a list of integers (much be in specified format).
  Returns a ordered, double-linked DOLinkedList <int> object. Used for reading both the 
  addition and deletion file
- Paramemters:
+ Parameters:
     file: The name of the file to be read. 
  Return Value:
     A DOLinkedList object containing the values read from the file specified by the file
