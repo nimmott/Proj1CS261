@@ -22,8 +22,6 @@
 using namespace std;
 /*
 Constants for project. File name of data files.
-numInts controls the number of ints in the default
-data files that are created when a file does not exist.
 */
 const string fileAddition = "proj1adds.data";
 const string fileDeletion = "proj1deletes.data";
@@ -38,6 +36,7 @@ const int numInts = 100;
     count: the number of randdom integers to be contained in the file
  */
 void createDataFile(string filename, int count);
+
 /*Print a linked list in order (starting a first node, ending at last node).
  Function uses an Iterator object and obtains the value of each element in the
  list by using the Iterator's user-defined dereferencing operator.
@@ -46,6 +45,7 @@ void createDataFile(string filename, int count);
     a comment that the list is empty and returns.
 */
 void printForwards ( DOLinkedList<int> intList);
+
 /*Print a linked list in reverse order (starting with the last node, ending with the first node).
  Function uses an Iterator object and obtains the value of each element in the
  list by using the Iterator's user-defined dereferencing operator.
@@ -54,6 +54,7 @@ void printForwards ( DOLinkedList<int> intList);
  a comment that the list is empty and returns.
  */
 void printBackwards ( DOLinkedList<int> intList);
+
 /*Reads the specified data file containing a list of integers (much be in specified format).
  Returns a ordered, double-linked DOLinkedList <int> object. Used for reading both the 
  addition and deletion file

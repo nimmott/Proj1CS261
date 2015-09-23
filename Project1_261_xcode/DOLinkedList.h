@@ -32,7 +32,7 @@ public:
  //Default construcor. Sets current to p
     Iterator(Node <T>* p): current (p){}
  
-//Allows forward iteratio through list
+//Allows forward iteration through list
     Iterator operator++(int){
         current = current->next;
         return *this;
@@ -76,12 +76,14 @@ public:
     //This creates a "deep" copy of the linked list.
     //If list is empty, initializes object and then returns.
     DOLinkedList(const DOLinkedList& otherObject);
+    
     //returns the number of elements contained in the linked list
     int getSize(){return size;}
     //Adds a new node to the list. Inserted in order according to the
     //value of element. Duplicate values result in multiple nodes
     //(i.e., multiple instances of the same value are allowed)
     void add(T element);
+    
     //Removes all instances of the specified element from the linked list.
     void remove (T element);
     //testing functions, commented out as per instructions in class
@@ -111,7 +113,7 @@ public:
     };
     
     //returns and iterator requried for starting a backwards iteration
-    //through a list. "Points to" last node in list. 
+    //through a list. "Points to" last node in list.
     Iterator < T > endB(){
         
         return Iterator<T> (tail);
@@ -123,43 +125,6 @@ private:
     int size;
     
 };
-
-//template <typename T>
-//void DOLinkedList<T>::printListBackwards(){
-//    Node<T> * current = tail;
-//    
-//    if (tail == NULL){
-//        cout <<"Attempting to print empty list"<<endl;
-//    }
-//    cout << "Printing a list backwards of "<< size <<" elements"<<endl;
-//    while (current != NULL){
-//        cout<< current->data<<endl;
-//        current = current->previous;
-//    }
-//    
-//}
-
-//template <typename T>
-//void DOLinkedList<T>::printList(){
-//    
-//    Node<T> * current = head;
-//    if (head == NULL){
-//        cout<<"Empty list"<<endl;
-//        return;
-//    }
-//    cout << "Printing a list forwards of "<< size <<" elements"<<endl;
-//    
-//    int checkListSize = 0;
-//    
-//    while (current!=NULL){
-//        checkListSize++;
-//        cout<< current->data<<endl;
-//        current = current->next;
-//    }
-//    cout << checkListSize<<" elements"<<endl;
-//    cout <<"-----------------End of list--------------"<<endl;
-//}
-
 
 
 template<typename T>
@@ -173,16 +138,18 @@ void DOLinkedList<T>::remove(T element){
     }
 
     while (current != NULL){
-        
-        if (head->next == NULL && head->data == element){ //deleting head when it's the only element
+        //deleting head when it's the only element
+        //can return as there are no duplicates
+        if (head->next == NULL && head->data == element){
             delete head;
             head = tail = current = NULL;
             cout <<"List is now empty"<<endl;
             size--;
             return;
         }
-
-    if (head->data == element && head->next != NULL){ //deleting first element it's not the only element
+    //deleting first element it's not the only element. Because it's not the only element
+    //loop must continue after this block to deal with possiblity of multiple values
+    if (head->data == element && head->next != NULL){
         head = head->next;
         head->previous = NULL;
         temp = current->next;
@@ -191,17 +158,23 @@ void DOLinkedList<T>::remove(T element){
         size --;
         continue;
     }
-    
-    if (current->data == element && current->next == NULL){ //deleting last element
-            current->previous->next = NULL;                //we know last element != head
+    //deleting last element
+    //we know last element != head
+    //loop can terminate here because if we have hit the end, there
+    //are no more duplicates
+    if (current->data == element && current->next == NULL){
+            current->previous->next = NULL;
             tail = current->previous;
             delete current;
             current = NULL;
             size--;
             return;
         }
-        
-    if (current->data == element){ //deleting element in the middle of list
+    
+    //deleting element in the middle of list
+    //loop must continue after this block to deal with the possiblity
+    // of multiple values
+    if (current->data == element){
         current->previous->next = current->next;
         current->next->previous = current->previous;
         temp = current->next;
@@ -289,5 +262,41 @@ void DOLinkedList<T>::add (T element){
 
     }
 }
+
+//template <typename T>
+//void DOLinkedList<T>::printListBackwards(){
+//    Node<T> * current = tail;
+//
+//    if (tail == NULL){
+//        cout <<"Attempting to print empty list"<<endl;
+//    }
+//    cout << "Printing a list backwards of "<< size <<" elements"<<endl;
+//    while (current != NULL){
+//        cout<< current->data<<endl;
+//        current = current->previous;
+//    }
+//
+//}
+
+//template <typename T>
+//void DOLinkedList<T>::printList(){
+//
+//    Node<T> * current = head;
+//    if (head == NULL){
+//        cout<<"Empty list"<<endl;
+//        return;
+//    }
+//    cout << "Printing a list forwards of "<< size <<" elements"<<endl;
+//
+//    int checkListSize = 0;
+//
+//    while (current!=NULL){
+//        checkListSize++;
+//        cout<< current->data<<endl;
+//        current = current->next;
+//    }
+//    cout << checkListSize<<" elements"<<endl;
+//    cout <<"-----------------End of list--------------"<<endl;
+//}
 #endif	/* DOLINKEDLIST_H */
 
