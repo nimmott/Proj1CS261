@@ -29,7 +29,7 @@ public:
 template<typename T>
 class Iterator{
 public:
- //Default construcor. Sets current to p
+ //Default constructor. Sets current to p
     Iterator(Node <T>* p): current (p){}
  
 //Allows forward iteration through list
@@ -72,7 +72,7 @@ public:
     DOLinkedList (): head (NULL), tail (NULL), size (0){}
     virtual ~DOLinkedList();
     
-    //Copy constructor. Default createsa a shallow copy.
+    //Copy constructor. Default creates a a shallow copy.
     //This creates a "deep" copy of the linked list.
     //If list is empty, initializes object and then returns.
     DOLinkedList(const DOLinkedList& otherObject);
@@ -105,14 +105,14 @@ public:
         return Iterator < T > (head->previous);
     };
 
-    //Returns an iterator reqruied for testing for end of list when
+    //Returns an iterator required for testing for end of list when
     //iteration forwards through a list
     Iterator < T > endF()
     {
         return Iterator < T > (tail->next);
     };
     
-    //returns and iterator requried for starting a backwards iteration
+    //returns and iterator required for starting a backwards iteration
     //through a list. "Points to" last node in list.
     Iterator < T > endB(){
         
@@ -148,7 +148,7 @@ void DOLinkedList<T>::remove(T element){
             return;
         }
     //deleting first element it's not the only element. Because it's not the only element
-    //loop must continue after this block to deal with possiblity of multiple values
+    //loop must continue after this block to deal with possibility of multiple values
     if (head->data == element && head->next != NULL){
         head = head->next;
         head->previous = NULL;
@@ -172,7 +172,7 @@ void DOLinkedList<T>::remove(T element){
         }
     
     //deleting element in the middle of list
-    //loop must continue after this block to deal with the possiblity
+    //loop must continue after this block to deal with the possibility
     // of multiple values
     if (current->data == element){
         current->previous->next = current->next;

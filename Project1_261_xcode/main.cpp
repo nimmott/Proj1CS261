@@ -41,7 +41,7 @@ void createDataFile(string filename, int count);
  Function uses an Iterator object and obtains the value of each element in the
  list by using the Iterator's user-defined dereferencing operator.
  Parameters:
-    intList: A linked list of type int. If list is empty, function outputs
+    intList: A linked list specialized with type int. If list is empty, function outputs
     a comment that the list is empty and returns.
 */
 void printForwards ( DOLinkedList<int> intList);
@@ -50,12 +50,12 @@ void printForwards ( DOLinkedList<int> intList);
  Function uses an Iterator object and obtains the value of each element in the
  list by using the Iterator's user-defined dereferencing operator.
  Parameters:
- intList: A linked list of type int. If list is empty, function outputs
+ intList: A linked list specialized with type int. If list is empty, function outputs
  a comment that the list is empty and returns.
  */
 void printBackwards ( DOLinkedList<int> intList);
 
-/*Reads the specified data file containing a list of integers (much be in specified format).
+/*Reads the specified data file containing a list of integers (much be in correct format).
  Returns a ordered, double-linked DOLinkedList <int> object. Used for reading both the 
  addition and deletion file
  Parameters:
@@ -92,10 +92,10 @@ createDataFile(fileDeletion, numInts);
     //print the list backwards now, after the items from the proj1deletes.data file have been removed
     
     cout <<"The linked list now contains "<<intList.getSize() <<" elements after reading deletion file"<<endl;
-    
+   
+    printForwards(intList);
     printBackwards(intList);
     
-   
 }
 
 void createDataFile(string filename, int count){
