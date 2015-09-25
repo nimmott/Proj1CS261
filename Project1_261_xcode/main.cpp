@@ -25,17 +25,10 @@ Constants for project. File name of data files.
 */
 const string fileAddition = "proj1adds.data";
 const string fileDeletion = "proj1deletes.data";
-const int numInts = 100;
+const int numInts = 10;
 
 
-/* The create data file function is for testing and, as per instructions in class,
- is commented out.
- Creates a list of random integers (number specified by count parameter).
- Parameters:
-    filename: the name of the file created by this function
-    count: the number of random integers to be contained in the file
- */
-void createDataFile(string filename, int count);
+
 
 /*Print a linked list in order (starting a first node, ending at last node).
  Function uses an Iterator object and obtains the value of each element in the
@@ -67,9 +60,19 @@ void printBackwards ( DOLinkedList<int> intList);
 DOLinkedList<int> readfile(string file);
 
 
+/* The create data file function is for testing and, as per instructions in class,
+ is commented out.
+ Creates a list of random integers (number specified by count parameter).
+ Parameters:
+ filename: the name of the file created by this function
+ count: the number of random integers to be contained in the file
+ */
+void createDataFile(string filename, int count);
+
+
 int main(int argc, char** argv) {
-createDataFile(fileAddition, numInts);
-createDataFile(fileDeletion, numInts);
+//createDataFile(fileAddition, numInts);
+//createDataFile(fileDeletion, numInts);
     
     
     DOLinkedList<int> intList = readfile(fileAddition);
@@ -84,11 +87,15 @@ createDataFile(fileDeletion, numInts);
      */
     DOLinkedList<int> deletionList = readfile(fileDeletion);
     
+  //  int checkLoop = 0;
+    
         for (Iterator<int> deletionIterator = deletionList.beginF(); deletionIterator !=deletionList.endF(); deletionIterator++){
             
             intList.remove(*deletionIterator);
+   //         checkLoop++;
         
             }
+    //cout <<"The deletion loop has iterated "<< checkLoop<<" times."<<endl;
     //print the list backwards now, after the items from the proj1deletes.data file have been removed
     
     cout <<"The linked list now contains "<<intList.getSize() <<" elements after reading deletion file"<<endl;
