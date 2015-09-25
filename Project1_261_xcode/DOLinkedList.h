@@ -102,7 +102,7 @@ public:
     
     Iterator < T > beginB()
     {
-        return Iterator < T > (head->previous);
+        return Iterator < T > (tail);
     };
 
     //Returns an iterator required for testing for end of list when
@@ -116,7 +116,7 @@ public:
     //through a list. "Points to" last node in list.
     Iterator < T > endB(){
         
-        return Iterator<T> (tail);
+        return Iterator<T> (head->previous);
     }
     
 private:

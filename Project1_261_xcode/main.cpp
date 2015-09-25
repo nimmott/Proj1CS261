@@ -25,7 +25,7 @@ Constants for project. File name of data files.
 */
 const string fileAddition = "proj1adds.data";
 const string fileDeletion = "proj1deletes.data";
-const int numInts = 10;
+const int numInts = 5000;
 
 
 
@@ -71,8 +71,8 @@ void createDataFile(string filename, int count);
 
 
 int main(int argc, char** argv) {
-//createDataFile(fileAddition, numInts);
-//createDataFile(fileDeletion, numInts);
+createDataFile(fileAddition, numInts);
+createDataFile(fileDeletion, numInts);
     
     
     DOLinkedList<int> intList = readfile(fileAddition);
@@ -159,10 +159,10 @@ void printBackwards ( DOLinkedList<int> intList){
         cout <<"Attempting to print an empty list"<<endl;
         return;
     }
-    Iterator<int> myIterator = intList.endB();
+    Iterator<int> myIterator = intList.beginB();
     cout <<"Printing a list backwards that contains " <<intList.getSize()<<" elements"<<endl;
     
-    for ( ; myIterator != intList.beginB(); myIterator--){
+    for ( ; myIterator != intList.endB(); myIterator--){
         
         cout << *myIterator<< endl;
         
