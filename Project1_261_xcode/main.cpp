@@ -25,7 +25,7 @@ Constants for project. File name of data files.
 */
 const string fileAddition = "proj1adds.data";
 const string fileDeletion = "proj1deletes.data";
-const int numInts = 5000;
+const int numInts = 100;
 
 
 
@@ -61,7 +61,7 @@ DOLinkedList<int> readfile(string file);
 
 
 /* The create data file function is for testing and, as per instructions in class,
- is commented out.
+ is commented out but left in the file.
  Creates a list of random integers (number specified by count parameter).
  Parameters:
  filename: the name of the file created by this function
@@ -71,8 +71,8 @@ void createDataFile(string filename, int count);
 
 
 int main(int argc, char** argv) {
-createDataFile(fileAddition, numInts);
-createDataFile(fileDeletion, numInts);
+//createDataFile(fileAddition, numInts);
+//createDataFile(fileDeletion, numInts);
     
     
     DOLinkedList<int> intList = readfile(fileAddition);

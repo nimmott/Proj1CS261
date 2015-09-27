@@ -91,14 +91,14 @@ public:
     //void printListBackwards();
     
     //Returns and iterator required for forward iterations through the list.
-    //Iterator "points to" head of list
+    //Iterator points to head of list
     Iterator < T > beginF()
     {
         return Iterator < T > (head);
     };
     
-    //Returns an iterator required for testing end of list conditions
-    //when iterating backwards through a list
+    //Returns an iterator for beginning a backwards loop
+    //through the list
     
     Iterator < T > beginB()
     {
@@ -112,8 +112,8 @@ public:
         return Iterator < T > (tail->next);
     };
     
-    //returns and iterator required for starting a backwards iteration
-    //through a list. "Points to" last node in list.
+    //returns and iterator required for ending a backwards iteration
+    //through a list. Points to the predecessor of the head node
     Iterator < T > endB(){
         
         return Iterator<T> (head->previous);
